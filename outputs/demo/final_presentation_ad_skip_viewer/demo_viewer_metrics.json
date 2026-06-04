@@ -1,0 +1,27 @@
+{
+  "is_public_sample": true,
+  "notes": "Synthetic metrics for UI demonstration only.",
+  "overall_metrics": {
+    "ad_capture_rate_pct": 92.8,
+    "prediction_precision_pct": 89.4,
+    "mean_start_error_sec": 1.0,
+    "mean_end_error_sec": 2.0,
+    "false_positive_duration_sec": 0.0
+  },
+  "metrics_by_video": {
+    "101": {
+      "ad_capture_rate_pct": 93.0,
+      "prediction_precision_pct": 91.0,
+      "mean_start_error_sec": 0.5,
+      "mean_end_error_sec": 1.8,
+      "false_positive_duration_sec": 0.0
+    },
+    "102": {
+      "ad_capture_rate_pct": 92.5,
+      "prediction_precision_pct": 86.8,
+      "mean_start_error_sec": 1.0,
+      "mean_end_error_sec": 2.5,
+      "false_positive_duration_sec": 0.0
+    }
+  }
+}

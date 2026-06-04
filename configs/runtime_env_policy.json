@@ -1,0 +1,21 @@
+{
+  "project_root": ".",
+  "required_conda_env": "cv",
+  "python_execution_policy": "All project Python commands must be run with: conda run -n cv python",
+  "forbidden": [
+    "system python",
+    "base conda python",
+    "pip install without conda run -n cv",
+    "sudo pip install",
+    "editing ./_old_project_not_included"
+  ],
+  "required_packages": [
+    "pandas",
+    "openpyxl"
+  ],
+  "recommended_commands": [
+    "conda run -n cv python <script.py>",
+    "./scripts/run_cv_python.sh <script.py>"
+  ],
+  "created_at": "2026-05-22T16:27:07+09:00"
+}

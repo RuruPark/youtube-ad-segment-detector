@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>유튜브 영상 광고 탐지 서비스</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="title-block">
+      <h1>유튜브 영상 광고 탐지 서비스</h1>
+    </div>
+    <div class="selectors" aria-label="영상 설정">
+      <label for="videoSelect">영상 선택</label>
+      <select id="videoSelect"></select>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="metrics-panel metrics-panel-left" aria-label="Sample 전체 성능">
+      <h2>Sample 전체 성능</h2>
+      <div id="overallMetricsList" class="metrics-list"></div>
+    </aside>
+
+    <section class="player-section" aria-label="공개 샘플 데모 플레이어">
+      <div class="video-shell" id="videoShell">
+        <video id="videoPlayer" preload="metadata" playsinline></video>
+        <button id="adSkipButton" class="ad-skip-button" type="button" aria-pressed="false">광고 스킵</button>
+        <div id="playPulse" class="play-pulse" hidden aria-hidden="true"></div>
+        <div id="playbackWarning" class="playback-warning" hidden></div>
+      </div>
+
+      <div class="timeline-wrap" aria-label="광고 구간 타임라인">
+        <div class="timeline-labels">
+          <span id="currentTimeText">00:00</span>
+          <span id="durationText">00:00</span>
+        </div>
+        <div id="adTimeline" class="ad-timeline" role="slider" tabindex="0" aria-label="영상 이동 및 광고 구간 타임라인" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0" aria-valuetext="00:00 / 00:00">
+          <div id="timelineLayers"></div>
+          <div id="timeMarker" class="time-marker"></div>
+        </div>
+        <div class="legend" aria-label="타임라인 색상">
+          <span><i class="legend-swatch predicted"></i>예측 광고 구간</span>
+          <span><i class="legend-swatch actual"></i>실제 광고 구간</span>
+        </div>
+      </div>
+    </section>
+
+    <aside class="metrics-panel metrics-panel-right" aria-label="선택 영상 성능">
+      <h2>선택 영상 성능</h2>
+      <div id="selectedVideoMetricTitle" class="selected-video-title"></div>
+      <div id="videoMetricsList" class="metrics-list"></div>
+    </aside>
+  </main>
+
+  <script src="demo_viewer_manifest.js"></script>
+  <script src="demo_viewer_metrics.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

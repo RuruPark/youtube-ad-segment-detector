@@ -1,0 +1,157 @@
+{
+  "task_name": "scene_audio_ocr_rule_documentation",
+  "version": "v1.1",
+  "documentation_only": true,
+  "not_executable_detector_config": true,
+  "no_detector_implementation": true,
+  "no_predicted_intervals_generated": true,
+  "generated_at": "2026-05-25T06:10:41+09:00",
+  "project_root": ".",
+  "split": {
+    "name": "v2_4",
+    "split_seed": 20240524,
+    "train_video_id": [
+      1,
+      2,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "validation_video_id": [
+      3,
+      7,
+      18
+    ],
+    "test_video_id": [
+      4,
+      16,
+      17
+    ],
+    "rule_design_basis": "train_only",
+    "validation_usage": "discussion_audit_adjustment_candidate_review_only",
+    "test_usage": "protected_until_final_evaluation",
+    "test_row_level_features_in_discussion_bundle": false
+  },
+  "visual_scene_anchor": {
+    "role": "visual_transition_anchor",
+    "required_sentence": "visual scene anchor는 광고 시작/종료의 직접 evidence가 아니라, 상태 변화가 일어날 수 있는 화면 전환 후보 시각이다.",
+    "time_column_candidates": [
+      "candidate_time_sec",
+      "canonical_boundary_time_sec"
+    ],
+    "context_window_sec": 10,
+    "direct_start_end_evidence": false,
+    "timestamp_convention": {
+      "ad_start": "visual_transition_anchor.candidate_time_sec",
+      "ad_end": "visual_transition_anchor.candidate_time_sec"
+    }
+  },
+  "ocr_rule_v1": {
+    "coverage": {
+      "valid_frame": [
+        "success",
+        "empty"
+      ],
+      "failed_is_valid_frame": false,
+      "high_min_ratio": 0.8,
+      "medium_min_ratio": 0.4,
+      "low_max_ratio_exclusive": 0.4,
+      "low_score_low_coverage_interpretation": "ocr_unknown_not_non_ad"
+    },
+    "start": {
+      "strong_disclosure": "ocr_start_high",
+      "weak_disclosure_alone": "ocr_start_medium",
+      "product_repetition_alone": "continuity_not_start_confirmation",
+      "negative_guard_zeroes_disclosure": true
+    },
+    "end": {
+      "cta_pre_10s": "ocr_end_medium",
+      "cta_plus_post_decrease_plus_audio_low": "end_high_possible",
+      "cta_alone_confirms_end": false
+    },
+    "discount_benefit": {
+      "alone": "weak_count_only",
+      "with_cta_product_link": "weak_support",
+      "core_start_end_score_alone": false
+    }
+  },
+  "audio_rule_v1": {
+    "role": "medium_strength_supporting_evidence",
+    "audio_alone_confirms_start": false,
+    "audio_alone_confirms_end": false,
+    "start_support": [
+      "ocr_start_high_plus_audio_high_or_medium",
+      "ocr_start_medium_plus_audio_high_or_medium",
+      "ocr_coverage_low_plus_audio_high_or_medium_weak_pending"
+    ],
+    "end_support": [
+      "audio_before_high_or_medium_plus_audio_after_low",
+      "ocr_coverage_high_plus_ocr_low_plus_audio_low"
+    ],
+    "c3": {
+      "definition": "audio_high + ocr_coverage_high + ocr_low",
+      "interpretation": "lower_ad_likelihood",
+      "two_consecutive": "tilt_to_end_or_non_ad"
+    },
+    "d2": {
+      "definition": "audio_low + ocr_high",
+      "interpretation": "medium_ad_continuity_support"
+    }
+  },
+  "state_machine_v1_1": {
+    "states": [
+      "non_ad",
+      "start_pending",
+      "in_ad",
+      "end_pending"
+    ],
+    "minimum_duration_prior_sec": 20,
+    "e2_exception": "allow_end_within_20s_only_if_ocr_audio_low_coverage_sufficient_following_low",
+    "long_ad_prior": {
+      "typical_range_sec": [
+        40,
+        120
+      ],
+      "hard_cut_after_120s": false,
+      "after_120s": "more_sensitive_to_end_like_flow"
+    },
+    "low_gap_bridge": [
+      {
+        "gap_sec": "<=10",
+        "requirement": "audio_or_ocr_medium_or_higher"
+      },
+      {
+        "gap_sec": ">10_and_<=20",
+        "requirement": "audio_and_ocr_both_medium_or_higher"
+      },
+      {
+        "gap_sec": ">20",
+        "requirement": "no_automatic_bridge"
+      }
+    ],
+    "pending_todos": [],
+    "pending_rules_finalized": true,
+    "start_pending_max_anchor_count": 1,
+    "start_pending_max_duration_sec": 15,
+    "start_pending_timeout_action": "cancel_to_non_ad",
+    "end_pending_max_anchor_count": 2,
+    "end_pending_max_duration_sec": 20,
+    "end_pending_timeout_action_before_120s": "return_to_in_ad_if_no_confirming_low_flow",
+    "end_pending_timeout_action_after_120s": "confirm_end_only_if_repeated_low_or_repeated_c3_else_return_to_in_ad",
+    "retroactive_start_review_anchor_count": 1,
+    "minimum_ad_duration_sec": 20,
+    "allow_e2_exception_within_min_duration": true,
+    "long_ad_sensitive_after_sec": 120,
+    "hard_cut_after_120s": false,
+    "merge_overlapping_intervals": true,
+    "merge_gap_sec": 10,
+    "nearest_true_boundary_usage": "audit_only_not_scoring"
+  }
+}

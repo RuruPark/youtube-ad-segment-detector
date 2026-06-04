@@ -1,0 +1,757 @@
+{
+  "version": "v2_4",
+  "created_at": "2026-05-24T18:16:02",
+  "notice": "Seed keyword plus observed token-frequency candidates for label-aligned OCR cue analysis; not a final detector dictionary.",
+  "categories": [
+    "ad_disclosure",
+    "brand",
+    "cta",
+    "discount",
+    "link_or_more_info",
+    "observed_candidate",
+    "product",
+    "promotion",
+    "purchase",
+    "sponsor"
+  ],
+  "entries": [
+    {
+      "category": "ad_disclosure",
+      "keyword": "광고",
+      "is_regex": false,
+      "weight": 1.2,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "ad_disclosure",
+      "keyword": "유료광고",
+      "is_regex": false,
+      "weight": 1.6,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "ad_disclosure",
+      "keyword": "ad",
+      "is_regex": false,
+      "weight": 0.8,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "sponsor",
+      "keyword": "협찬",
+      "is_regex": false,
+      "weight": 1.5,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "sponsor",
+      "keyword": "제공",
+      "is_regex": false,
+      "weight": 0.8,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "sponsor",
+      "keyword": "sponsored",
+      "is_regex": false,
+      "weight": 1.5,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "sponsor",
+      "keyword": "sponsor",
+      "is_regex": false,
+      "weight": 1.3,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "brand",
+      "keyword": "브랜드",
+      "is_regex": false,
+      "weight": 0.9,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "brand",
+      "keyword": "공식",
+      "is_regex": false,
+      "weight": 0.8,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "brand",
+      "keyword": "정품",
+      "is_regex": false,
+      "weight": 0.8,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "brand",
+      "keyword": "brand",
+      "is_regex": false,
+      "weight": 0.9,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "product",
+      "keyword": "제품",
+      "is_regex": false,
+      "weight": 0.9,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "product",
+      "keyword": "신제품",
+      "is_regex": false,
+      "weight": 1.0,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "product",
+      "keyword": "라인업",
+      "is_regex": false,
+      "weight": 0.6,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "product",
+      "keyword": "product",
+      "is_regex": false,
+      "weight": 0.8,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "promotion",
+      "keyword": "프로모션",
+      "is_regex": false,
+      "weight": 1.0,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "promotion",
+      "keyword": "이벤트",
+      "is_regex": false,
+      "weight": 0.9,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "promotion",
+      "keyword": "혜택",
+      "is_regex": false,
+      "weight": 0.9,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "promotion",
+      "keyword": "추천",
+      "is_regex": false,
+      "weight": 0.6,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "promotion",
+      "keyword": "체험",
+      "is_regex": false,
+      "weight": 0.7,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "promotion",
+      "keyword": "무료",
+      "is_regex": false,
+      "weight": 0.8,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "promotion",
+      "keyword": "가입",
+      "is_regex": false,
+      "weight": 0.8,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "promotion",
+      "keyword": "정기구독",
+      "is_regex": false,
+      "weight": 1.0,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "promotion",
+      "keyword": "구독",
+      "is_regex": false,
+      "weight": 0.6,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "promotion",
+      "keyword": "promotion",
+      "is_regex": false,
+      "weight": 1.0,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "promotion",
+      "keyword": "event",
+      "is_regex": false,
+      "weight": 0.8,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "promotion",
+      "keyword": "free",
+      "is_regex": false,
+      "weight": 0.8,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "promotion",
+      "keyword": "trial",
+      "is_regex": false,
+      "weight": 0.8,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "promotion",
+      "keyword": "subscribe",
+      "is_regex": false,
+      "weight": 0.8,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "discount",
+      "keyword": "할인",
+      "is_regex": false,
+      "weight": 1.1,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "discount",
+      "keyword": "쿠폰",
+      "is_regex": false,
+      "weight": 1.1,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "discount",
+      "keyword": "특가",
+      "is_regex": false,
+      "weight": 1.1,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "discount",
+      "keyword": "할인가",
+      "is_regex": false,
+      "weight": 1.1,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "discount",
+      "keyword": "세일",
+      "is_regex": false,
+      "weight": 0.9,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "discount",
+      "keyword": "적립",
+      "is_regex": false,
+      "weight": 0.8,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "discount",
+      "keyword": "포인트",
+      "is_regex": false,
+      "weight": 0.7,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "discount",
+      "keyword": "discount",
+      "is_regex": false,
+      "weight": 1.0,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "discount",
+      "keyword": "coupon",
+      "is_regex": false,
+      "weight": 1.0,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "discount",
+      "keyword": "sale",
+      "is_regex": false,
+      "weight": 0.9,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "purchase",
+      "keyword": "구매",
+      "is_regex": false,
+      "weight": 1.1,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "purchase",
+      "keyword": "주문",
+      "is_regex": false,
+      "weight": 1.0,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "purchase",
+      "keyword": "결제",
+      "is_regex": false,
+      "weight": 1.0,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "purchase",
+      "keyword": "buy",
+      "is_regex": false,
+      "weight": 1.0,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "purchase",
+      "keyword": "order",
+      "is_regex": false,
+      "weight": 1.0,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "cta",
+      "keyword": "신청",
+      "is_regex": false,
+      "weight": 0.9,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "cta",
+      "keyword": "설치",
+      "is_regex": false,
+      "weight": 0.9,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "cta",
+      "keyword": "다운로드",
+      "is_regex": false,
+      "weight": 1.0,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "cta",
+      "keyword": "바로가기",
+      "is_regex": false,
+      "weight": 1.0,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "cta",
+      "keyword": "확인하기",
+      "is_regex": false,
+      "weight": 0.9,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "cta",
+      "keyword": "만나보세요",
+      "is_regex": false,
+      "weight": 0.8,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "cta",
+      "keyword": "download",
+      "is_regex": false,
+      "weight": 1.0,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "cta",
+      "keyword": "install",
+      "is_regex": false,
+      "weight": 0.9,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "cta",
+      "keyword": "apply",
+      "is_regex": false,
+      "weight": 0.8,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "link_or_more_info",
+      "keyword": "링크",
+      "is_regex": false,
+      "weight": 1.0,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "link_or_more_info",
+      "keyword": "더보기",
+      "is_regex": false,
+      "weight": 1.0,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "link_or_more_info",
+      "keyword": "설명란",
+      "is_regex": false,
+      "weight": 1.0,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "link_or_more_info",
+      "keyword": "고정댓글",
+      "is_regex": false,
+      "weight": 0.9,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "link_or_more_info",
+      "keyword": "댓글",
+      "is_regex": false,
+      "weight": 0.5,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "link_or_more_info",
+      "keyword": "아래",
+      "is_regex": false,
+      "weight": 0.5,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "link_or_more_info",
+      "keyword": "url",
+      "is_regex": false,
+      "weight": 0.9,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "link_or_more_info",
+      "keyword": "link",
+      "is_regex": false,
+      "weight": 0.9,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "link_or_more_info",
+      "keyword": "description",
+      "is_regex": false,
+      "weight": 0.8,
+      "source": "seed_keyword_v2_4"
+    },
+    {
+      "category": "observed_candidate",
+      "keyword": "wrist",
+      "is_regex": false,
+      "weight": 0.35,
+      "source": "label_aligned_token_frequency_lift_candidate",
+      "ad_reference_count": 14,
+      "nonad_context_count": 0,
+      "ad_to_nonad_lift_smoothed": 3288.15661
+    },
+    {
+      "category": "observed_candidate",
+      "keyword": "massager",
+      "is_regex": false,
+      "weight": 0.35,
+      "source": "label_aligned_token_frequency_lift_candidate",
+      "ad_reference_count": 13,
+      "nonad_context_count": 0,
+      "ad_to_nonad_lift_smoothed": 3053.359709
+    },
+    {
+      "category": "observed_candidate",
+      "keyword": "tens+ems",
+      "is_regex": false,
+      "weight": 0.35,
+      "source": "label_aligned_token_frequency_lift_candidate",
+      "ad_reference_count": 12,
+      "nonad_context_count": 0,
+      "ad_to_nonad_lift_smoothed": 2818.562808
+    },
+    {
+      "category": "observed_candidate",
+      "keyword": "glowy",
+      "is_regex": false,
+      "weight": 0.35,
+      "source": "label_aligned_token_frequency_lift_candidate",
+      "ad_reference_count": 11,
+      "nonad_context_count": 0,
+      "ad_to_nonad_lift_smoothed": 2583.765907
+    },
+    {
+      "category": "observed_candidate",
+      "keyword": "마스크",
+      "is_regex": false,
+      "weight": 0.35,
+      "source": "label_aligned_token_frequency_lift_candidate",
+      "ad_reference_count": 10,
+      "nonad_context_count": 0,
+      "ad_to_nonad_lift_smoothed": 2348.969007
+    },
+    {
+      "category": "observed_candidate",
+      "keyword": "마사지기",
+      "is_regex": false,
+      "weight": 0.35,
+      "source": "label_aligned_token_frequency_lift_candidate",
+      "ad_reference_count": 9,
+      "nonad_context_count": 0,
+      "ad_to_nonad_lift_smoothed": 2114.172106
+    },
+    {
+      "category": "observed_candidate",
+      "keyword": "보호대",
+      "is_regex": false,
+      "weight": 0.35,
+      "source": "label_aligned_token_frequency_lift_candidate",
+      "ad_reference_count": 9,
+      "nonad_context_count": 0,
+      "ad_to_nonad_lift_smoothed": 2114.172106
+    },
+    {
+      "category": "observed_candidate",
+      "keyword": "chocolate",
+      "is_regex": false,
+      "weight": 0.35,
+      "source": "label_aligned_token_frequency_lift_candidate",
+      "ad_reference_count": 8,
+      "nonad_context_count": 0,
+      "ad_to_nonad_lift_smoothed": 1879.375205
+    },
+    {
+      "category": "observed_candidate",
+      "keyword": "pistachio",
+      "is_regex": false,
+      "weight": 0.35,
+      "source": "label_aligned_token_frequency_lift_candidate",
+      "ad_reference_count": 8,
+      "nonad_context_count": 0,
+      "ad_to_nonad_lift_smoothed": 1879.375205
+    },
+    {
+      "category": "observed_candidate",
+      "keyword": "위한",
+      "is_regex": false,
+      "weight": 0.35,
+      "source": "label_aligned_token_frequency_lift_candidate",
+      "ad_reference_count": 8,
+      "nonad_context_count": 0,
+      "ad_to_nonad_lift_smoothed": 1879.375205
+    },
+    {
+      "category": "observed_candidate",
+      "keyword": "mealii",
+      "is_regex": false,
+      "weight": 0.35,
+      "source": "label_aligned_token_frequency_lift_candidate",
+      "ad_reference_count": 7,
+      "nonad_context_count": 0,
+      "ad_to_nonad_lift_smoothed": 1644.578305
+    },
+    {
+      "category": "observed_candidate",
+      "keyword": "영상",
+      "is_regex": false,
+      "weight": 0.35,
+      "source": "label_aligned_token_frequency_lift_candidate",
+      "ad_reference_count": 7,
+      "nonad_context_count": 0,
+      "ad_to_nonad_lift_smoothed": 1644.578305
+    },
+    {
+      "category": "observed_candidate",
+      "keyword": "지원올",
+      "is_regex": false,
+      "weight": 0.35,
+      "source": "label_aligned_token_frequency_lift_candidate",
+      "ad_reference_count": 7,
+      "nonad_context_count": 0,
+      "ad_to_nonad_lift_smoothed": 1644.578305
+    },
+    {
+      "category": "observed_candidate",
+      "keyword": "celimax",
+      "is_regex": false,
+      "weight": 0.35,
+      "source": "label_aligned_token_frequency_lift_candidate",
+      "ad_reference_count": 6,
+      "nonad_context_count": 0,
+      "ad_to_nonad_lift_smoothed": 1409.781404
+    },
+    {
+      "category": "observed_candidate",
+      "keyword": "mg",
+      "is_regex": false,
+      "weight": 0.35,
+      "source": "label_aligned_token_frequency_lift_candidate",
+      "ad_reference_count": 6,
+      "nonad_context_count": 0,
+      "ad_to_nonad_lift_smoothed": 1409.781404
+    },
+    {
+      "category": "observed_candidate",
+      "keyword": "peps",
+      "is_regex": false,
+      "weight": 0.35,
+      "source": "label_aligned_token_frequency_lift_candidate",
+      "ad_reference_count": 6,
+      "nonad_context_count": 0,
+      "ad_to_nonad_lift_smoothed": 1409.781404
+    },
+    {
+      "category": "observed_candidate",
+      "keyword": "su",
+      "is_regex": false,
+      "weight": 0.35,
+      "source": "label_aligned_token_frequency_lift_candidate",
+      "ad_reference_count": 6,
+      "nonad_context_count": 0,
+      "ad_to_nonad_lift_smoothed": 1409.781404
+    },
+    {
+      "category": "observed_candidate",
+      "keyword": "문화체육관광부의",
+      "is_regex": false,
+      "weight": 0.35,
+      "source": "label_aligned_token_frequency_lift_candidate",
+      "ad_reference_count": 6,
+      "nonad_context_count": 0,
+      "ad_to_nonad_lift_smoothed": 1409.781404
+    },
+    {
+      "category": "observed_candidate",
+      "keyword": "받아",
+      "is_regex": false,
+      "weight": 0.35,
+      "source": "label_aligned_token_frequency_lift_candidate",
+      "ad_reference_count": 6,
+      "nonad_context_count": 0,
+      "ad_to_nonad_lift_smoothed": 1409.781404
+    },
+    {
+      "category": "observed_candidate",
+      "keyword": "세이크",
+      "is_regex": false,
+      "weight": 0.35,
+      "source": "label_aligned_token_frequency_lift_candidate",
+      "ad_reference_count": 6,
+      "nonad_context_count": 0,
+      "ad_to_nonad_lift_smoothed": 1409.781404
+    },
+    {
+      "category": "observed_candidate",
+      "keyword": "아이하브",
+      "is_regex": false,
+      "weight": 0.35,
+      "source": "label_aligned_token_frequency_lift_candidate",
+      "ad_reference_count": 6,
+      "nonad_context_count": 0,
+      "ad_to_nonad_lift_smoothed": 1409.781404
+    },
+    {
+      "category": "observed_candidate",
+      "keyword": "제작",
+      "is_regex": false,
+      "weight": 0.35,
+      "source": "label_aligned_token_frequency_lift_candidate",
+      "ad_reference_count": 6,
+      "nonad_context_count": 0,
+      "ad_to_nonad_lift_smoothed": 1409.781404
+    },
+    {
+      "category": "observed_candidate",
+      "keyword": "celimd",
+      "is_regex": false,
+      "weight": 0.35,
+      "source": "label_aligned_token_frequency_lift_candidate",
+      "ad_reference_count": 5,
+      "nonad_context_count": 0,
+      "ad_to_nonad_lift_smoothed": 1174.984503
+    },
+    {
+      "category": "observed_candidate",
+      "keyword": "sua",
+      "is_regex": false,
+      "weight": 0.35,
+      "source": "label_aligned_token_frequency_lift_candidate",
+      "ad_reference_count": 5,
+      "nonad_context_count": 0,
+      "ad_to_nonad_lift_smoothed": 1174.984503
+    },
+    {
+      "category": "observed_candidate",
+      "keyword": "리필",
+      "is_regex": false,
+      "weight": 0.35,
+      "source": "label_aligned_token_frequency_lift_candidate",
+      "ad_reference_count": 5,
+      "nonad_context_count": 0,
+      "ad_to_nonad_lift_smoothed": 1174.984503
+    },
+    {
+      "category": "observed_candidate",
+      "keyword": "손목",
+      "is_regex": false,
+      "weight": 0.35,
+      "source": "label_aligned_token_frequency_lift_candidate",
+      "ad_reference_count": 5,
+      "nonad_context_count": 0,
+      "ad_to_nonad_lift_smoothed": 1174.984503
+    },
+    {
+      "category": "observed_candidate",
+      "keyword": "아사지기",
+      "is_regex": false,
+      "weight": 0.35,
+      "source": "label_aligned_token_frequency_lift_candidate",
+      "ad_reference_count": 5,
+      "nonad_context_count": 0,
+      "ad_to_nonad_lift_smoothed": 1174.984503
+    },
+    {
+      "category": "observed_candidate",
+      "keyword": "이번트",
+      "is_regex": false,
+      "weight": 0.35,
+      "source": "label_aligned_token_frequency_lift_candidate",
+      "ad_reference_count": 5,
+      "nonad_context_count": 0,
+      "ad_to_nonad_lift_smoothed": 1174.984503
+    },
+    {
+      "category": "observed_candidate",
+      "keyword": "제작되없습니다",
+      "is_regex": false,
+      "weight": 0.35,
+      "source": "label_aligned_token_frequency_lift_candidate",
+      "ad_reference_count": 5,
+      "nonad_context_count": 0,
+      "ad_to_nonad_lift_smoothed": 1174.984503
+    },
+    {
+      "category": "observed_candidate",
+      "keyword": "총기매",
+      "is_regex": false,
+      "weight": 0.35,
+      "source": "label_aligned_token_frequency_lift_candidate",
+      "ad_reference_count": 5,
+      "nonad_context_count": 0,
+      "ad_to_nonad_lift_smoothed": 1174.984503
+    }
+  ],
+  "caveats": [
+    "OCR 오인식 token이 포함될 수 있으므로 observed_candidate는 human review 전 최종 dictionary로 고정하지 않는다.",
+    "이 dictionary는 scene-change + audio + OCR rule fusion 후보 feature 생성을 위한 탐색용이다."
+  ]
+}

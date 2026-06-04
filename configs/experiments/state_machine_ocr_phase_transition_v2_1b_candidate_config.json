@@ -1,0 +1,78 @@
+{
+  "version": "v2.1b_candidate",
+  "experiment_id": "state_machine_ocr_phase_transition_v2_1b_candidate_development",
+  "project_root": ".",
+  "base_config_id": "v2_1a_short_ad_safe_01",
+  "development_video_ids": [
+    1,
+    2,
+    5,
+    6,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "run_scope": "Development Set only",
+  "actual_label_policy": {
+    "actual_label_used_for_decision": false,
+    "actual_label_used_for_posthoc_scoring": true,
+    "plus5_actual_label_phase_used_for_decision": false
+  },
+  "input_paths": {
+    "v2_1a_base_experiment_root": "./data/experiments/state_machine_rule_weight_sweep_v2_1a_development",
+    "v2_1a_base_config_json": "./data/experiments/state_machine_rule_weight_sweep_v2_1a_development/candidate_rule_configs_v2_1a.json",
+    "v2_1a_base_top_config_root": "./data/experiments/state_machine_rule_weight_sweep_v2_1a_development/top_config_outputs/v2_1a_short_ad_safe_01",
+    "ocr_frame_results": "./workspaces/ocr_final_scene_anchor_v2_5_development/runs/final_scene_anchor_ocr_v2_5_development_20260527_050904/final_scene_anchor_ocr_frame_results_v2_5_development.csv",
+    "ocr_anchor_features": "./workspaces/ocr_final_scene_anchor_v2_5_development/runs/final_scene_anchor_ocr_v2_5_development_20260527_050904/final_scene_anchor_ocr_anchor_window_features_v2_5_development.csv",
+    "ocr_timeline_features": "./workspaces/ocr_final_scene_anchor_v2_5_development/runs/final_scene_anchor_ocr_v2_5_development_20260527_050904/final_scene_anchor_ocr_20s_timeline_features_v2_5_development.csv",
+    "plus5_report_reference_only": "./workspaces/ocr_quality_review_v2_5_development/runs/development_ad_context_plus5_ocr_review_v2_5_20260528_022158/development_ad_context_plus5_ocr_review_v2_5_report.json",
+    "plus5_transition_summary_reference_only": "./workspaces/ocr_quality_review_v2_5_development/runs/development_ad_context_plus5_ocr_review_v2_5_20260528_022158/development_ad_context_pre_body_post_ocr_transition_summary_v2_5.csv",
+    "actual_labels_scoring_only": "./data/segments/ad_interval_segments_v2_4.csv",
+    "split": "./data/splits/video_split_v2_4.csv",
+    "manifest": "./data/video_metadata/video_manifest_v2_2.csv"
+  },
+  "output_paths": {
+    "experiment_root": "./data/experiments/state_machine_ocr_phase_transition_v2_1b_candidate_development",
+    "viewer_registry_patch": "./outputs/viewer/state_machine_viewer_registry_patch_v2_1b_ocr_phase_transition_candidates.json",
+    "summary_md": "./reports/experiments/state_machine_ocr_phase_transition_v2_1b_candidate_summary.md",
+    "report_json": "./reports/experiments/state_machine_ocr_phase_transition_v2_1b_candidate_report.json",
+    "recommendation_note": "./reports/experiments/state_machine_ocr_phase_transition_v2_1b_candidate_recommendation_note.md",
+    "rule_note": "./reports/rules/scene_audio_ocr_state_machine_rule_v2_1b_ocr_phase_transition_experiment_note.md",
+    "run_log": "./logs/state_machine_ocr_phase_transition_v2_1b_candidate_run_log.txt",
+    "latest_bundle": "./outputs/latest_for_chatgpt_state_machine_ocr_phase_transition_v2_1b_candidate_development"
+  },
+  "candidate_variants": [
+    {
+      "candidate_id": "v2_1b_ocr_phase_transition_light",
+      "description": "Weak OCR phase transition adjustments on top of v2.1a short_ad_safe_01.",
+      "start_intro_weight": 0.05,
+      "body_density_weight": 0.05,
+      "end_drop_weight": 0.06,
+      "post_end_return_weight": 0.03,
+      "still_ad_like_penalty": 0.1
+    },
+    {
+      "candidate_id": "v2_1b_ocr_phase_transition_balanced",
+      "description": "Balanced OCR intro/body/end transition candidate for comparison; viewer review recommendation is decided from post-hoc Development Set scoring.",
+      "start_intro_weight": 0.08,
+      "body_density_weight": 0.08,
+      "end_drop_weight": 0.1,
+      "post_end_return_weight": 0.05,
+      "still_ad_like_penalty": 0.15
+    },
+    {
+      "candidate_id": "v2_1b_ocr_phase_transition_end_strict",
+      "description": "End strict OCR transition candidate with stronger end drop and still-ad-like penalty.",
+      "start_intro_weight": 0.05,
+      "body_density_weight": 0.06,
+      "end_drop_weight": 0.15,
+      "post_end_return_weight": 0.07,
+      "still_ad_like_penalty": 0.22
+    }
+  ]
+}

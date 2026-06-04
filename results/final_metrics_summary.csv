@@ -1,0 +1,6 @@
+metric,value,unit,description
+ad_segment_recall,85.0,percent,각 영상에서 실제 광고 구간을 얼마나 덮었는지 평균
+predicted_ad_precision,67.8,percent,각 영상에서 광고라고 예측한 구간이 실제 광고와 얼마나 겹쳤는지 평균
+average_start_error,38.4,seconds,실제 광고 시작 시점과 가장 잘 맞는 예측 구간 시작 시점의 평균 차이
+average_end_error,43.4,seconds,실제 광고 종료 시점과 가장 잘 맞는 예측 구간 종료 시점의 평균 차이
+false_positive_duration,55.8,seconds,영상 하나당 평균적으로 비광고를 광고로 잘못 잡은 시간

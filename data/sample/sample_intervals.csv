@@ -1,0 +1,4 @@
+video_id,ad_interval_id,ad_start_sec,ad_end_sec,label_valid,is_abrupt_transition_ad,notes
+101,SAMPLE_A_001,32.0,61.5,true,true,Public sample interval; not from a real video
+101,SAMPLE_A_002,116.0,147.0,true,true,Public sample interval; not from a real video
+102,SAMPLE_B_001,44.0,88.0,true,true,Public sample interval; not from a real video

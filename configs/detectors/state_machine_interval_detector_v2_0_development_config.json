@@ -1,0 +1,207 @@
+{
+  "version": "v2.0",
+  "detector_id": "state_machine_interval_detector_v2_0_development",
+  "base_version": "v1.4",
+  "project_root": ".",
+  "run_scope": "development_only",
+  "development_video_ids": [
+    1,
+    2,
+    5,
+    6,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "rule_doc_path": "./reports/rules/scene_audio_ocr_state_machine_rule_v2_0.md",
+  "rule_doc_sha256": "5991ef89b49151efd5f1f83a2c3a658883c590d05f0e5314a4f823efb0940c60",
+  "rule_contract_path": "./reports/rules/scene_audio_ocr_state_machine_rule_v2_0_contract.json",
+  "rule_contract_sha256": "1d3d82a938a206ccd0b321a90fcd381430cd3fa4308942b28665de5f32ae8cac",
+  "rule_contract": {
+    "version": "v2.0",
+    "detector_id": "state_machine_interval_detector_v2_0_development",
+    "split_scope": {
+      "original_split_v2_4": "train",
+      "split_role_v2_5": "development",
+      "evaluation_subset_v2_5": "none",
+      "development_video_ids": [
+        1,
+        2,
+        5,
+        6,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    },
+    "scene_semantics": {
+      "scene_anchor_role": "transition_time_anchor",
+      "source_count_usage": "scene_transition_reliability_only",
+      "scene_used_for_ad_likelihood_directly": false,
+      "scene_only_start_end_allowed": false
+    },
+    "opening_disclosure_guard": {
+      "opening_disclosure_window_sec_formula": "min(45, max(30, 0.02 * video_duration_sec))",
+      "disclosure_alone_action": "opening_disclosure_notice_review_only",
+      "confirmation_window_sec": [
+        15,
+        30
+      ]
+    },
+    "audio_policy": {
+      "same_video_relative_only": true,
+      "audio_alone_confirms_start_or_end": false,
+      "forbidden_decision_features": [
+        "audio_candidate_score_for_discussion",
+        "per_video_ad_vs_nonad_contrast_score",
+        "ad_overlap_ratio",
+        "is_ad_overlap",
+        "is_ad_core",
+        "is_clean_nonad",
+        "overlapping_ad_interval_ids"
+      ]
+    },
+    "freshness_timeout": {
+      "max_sec_since_last_hard_evidence": 30,
+      "actual_label_used": false
+    },
+    "support_only_cap": {
+      "support_only_max_duration_sec": 15,
+      "support_only_max_anchor_count": 3,
+      "duration_priority_over_anchor_count": true
+    },
+    "interval_scoring": {
+      "weights": {
+        "start_strength_score": 0.3,
+        "continuity_strength_score": 0.25,
+        "end_quality_score": 0.15,
+        "hard_evidence_density_score": 0.15,
+        "ocr_timeline_consistency_score": 0.1,
+        "audio_relative_support_score": 0.05
+      },
+      "clip": [
+        0,
+        1
+      ]
+    },
+    "video_level_overprediction_guard": {
+      "soft_overprediction_ratio": 0.18,
+      "hard_overprediction_ratio": 0.25,
+      "target_prediction_ratio_after_pruning": 0.15
+    },
+    "forbidden_decision_column_patterns": [
+      "label",
+      "true",
+      "actual",
+      "gt",
+      "ground_truth",
+      "audit",
+      "nearest_true_boundary",
+      "distance_to_nearest_true_boundary",
+      "is_near_true_boundary",
+      "ad_overlap",
+      "is_ad_overlap",
+      "is_ad_core",
+      "is_clean_nonad",
+      "overlapping_ad_interval_ids",
+      "per_video_ad_vs_nonad_contrast_score",
+      "audio_candidate_score_for_discussion"
+    ],
+    "actual_label_policy": {
+      "actual_label_used_for_decision": false,
+      "actual_label_used_for_posthoc_development_audit": true
+    },
+    "created_at": "2026-05-27T23:00:49+09:00"
+  },
+  "input_paths": {
+    "split": "./data/splits/video_split_v2_4.csv",
+    "manifest": "./data/video_metadata/video_manifest_v2_2.csv",
+    "labels": "./data/segments/ad_interval_segments_v2_4.csv",
+    "scene_anchor": "./data/scene/final_scene_boundary_anchor_v2_5_development.csv",
+    "ocr_anchor": "./workspaces/ocr_final_scene_anchor_v2_5_development/runs/final_scene_anchor_ocr_v2_5_development_20260527_050904/final_scene_anchor_ocr_anchor_window_features_v2_5_development.csv",
+    "ocr_timeline": "./workspaces/ocr_final_scene_anchor_v2_5_development/runs/final_scene_anchor_ocr_v2_5_development_20260527_050904/final_scene_anchor_ocr_20s_timeline_features_v2_5_development.csv",
+    "ocr_frame_optional": "./workspaces/ocr_final_scene_anchor_v2_5_development/runs/final_scene_anchor_ocr_v2_5_development_20260527_050904/final_scene_anchor_ocr_frame_results_v2_5_development.csv",
+    "audio": "./data/audio/per_video_audio_relative_levels_v2_4_train.csv",
+    "audio_subwindow_optional": "./data/audio/full_video_audio_subwindow_features_v2_4_train_20260526_1750_final.csv",
+    "audio_discussion": "./data/audio/per_video_train_audio_candidate_score_for_discussion_v2_4.csv",
+    "v14_script": "./scripts/detectors/run_state_machine_interval_detector_v1_4_train.py",
+    "v14_config": "./configs/detectors/state_machine_interval_detector_v1_4_train_config.json",
+    "v14_rule": "./reports/rules/scene_audio_ocr_state_machine_rule_v1_1.md",
+    "v14_summary": "./reports/detectors/state_machine_interval_detector_v1_4_train_summary.md",
+    "v14_note": "./reports/detectors/state_machine_interval_detector_v1_4_adjustment_note.md"
+  },
+  "output_paths": {
+    "rule_doc": "./reports/rules/scene_audio_ocr_state_machine_rule_v2_0.md",
+    "rule_contract": "./reports/rules/scene_audio_ocr_state_machine_rule_v2_0_contract.json",
+    "rule_plain_ko": "./reports/rules/scene_audio_ocr_state_machine_rule_v2_0_plain_korean_summary.md",
+    "rule_change": "./reports/rules/scene_audio_ocr_state_machine_rule_v2_0_vs_v1_4_change_summary.md",
+    "fusion_script": "./scripts/fusion/build_final_scene_audio_ocr_rule_input_v2_0_development.py",
+    "detector_script": "./scripts/detectors/run_state_machine_interval_detector_v2_0_development.py",
+    "config": "./configs/detectors/state_machine_interval_detector_v2_0_development_config.json",
+    "fusion_input": "./data/fusion/final_scene_audio_ocr_rule_input_v2_0_development.csv",
+    "schema_audit": "./data/fusion/final_scene_audio_ocr_rule_input_v2_0_development_schema_audit.csv",
+    "join_quality": "./data/fusion/final_scene_audio_ocr_rule_input_v2_0_development_join_quality.csv",
+    "column_mapping": "./data/fusion/final_scene_audio_ocr_rule_input_v2_0_development_column_mapping.json",
+    "raw_candidates": "./data/predictions/state_machine_interval_raw_candidates_v2_0_development.csv",
+    "predictions": "./data/predictions/state_machine_interval_predictions_v2_0_development.csv",
+    "review_only": "./data/predictions/state_machine_review_only_interval_candidates_v2_0_development.csv",
+    "overprediction_pruned": "./data/predictions/state_machine_overprediction_pruned_review_candidates_v2_0_development.csv",
+    "trace": "./data/predictions/state_machine_anchor_trace_v2_0_development.csv",
+    "open": "./data/predictions/state_machine_open_interval_candidates_v2_0_development.csv",
+    "unresolved": "./data/predictions/state_machine_unresolved_long_open_candidates_v2_0_development.csv",
+    "rejected": "./data/predictions/state_machine_rejected_long_open_candidates_v2_0_development.csv",
+    "disclosure_review": "./data/predictions/state_machine_disclosure_notice_review_candidates_v2_0_development.csv",
+    "evidence_events": "./data/predictions/state_machine_evidence_tier_events_v2_0_development.csv",
+    "fresh_timeout": "./data/predictions/state_machine_fresh_evidence_timeout_events_v2_0_development.csv",
+    "confidence_filter": "./data/predictions/state_machine_interval_confidence_filter_events_v2_0_development.csv",
+    "budget_events": "./data/predictions/state_machine_video_level_budget_guard_events_v2_0_development.csv",
+    "detector_audit": "./data/predictions/state_machine_detector_development_audit_v2_0.csv",
+    "video_summary": "./data/analysis/development_detector_error_video_summary_v2_0.csv",
+    "interval_overlap": "./data/analysis/development_detector_error_interval_overlap_v2_0.csv",
+    "trace_reason": "./data/analysis/development_detector_error_trace_reason_summary_v2_0.csv",
+    "worst_cases": "./data/analysis/development_detector_error_worst_cases_v2_0.csv",
+    "rule_issues": "./data/analysis/development_detector_rule_issue_candidates_v2_0.csv",
+    "comparison": "./data/analysis/state_machine_v1_4_vs_v2_0_development_comparison.csv",
+    "ratio_summary": "./data/analysis/state_machine_v2_0_video_prediction_ratio_summary.csv",
+    "summary": "./reports/detectors/state_machine_interval_detector_v2_0_development_summary.md",
+    "report": "./reports/detectors/state_machine_interval_detector_v2_0_development_report.json",
+    "adjustment_note": "./reports/detectors/state_machine_interval_detector_v2_0_adjustment_note.md",
+    "run_log": "./logs/state_machine_interval_detector_v2_0_development_run_log.txt",
+    "latest_bundle": "./outputs/latest_for_chatgpt_state_machine_detector_v2_0_development",
+    "latest_rule": "./outputs/latest_rule"
+  },
+  "backup_dir": "./backups/state_machine_detector_v2_0_development_20260527_230048",
+  "decision_safety": {
+    "actual_label_used_for_decision": false,
+    "actual_label_used_for_posthoc_development_audit": true,
+    "forbidden_decision_column_patterns": [
+      "label",
+      "true",
+      "actual",
+      "gt",
+      "ground_truth",
+      "audit",
+      "nearest_true_boundary",
+      "distance_to_nearest_true_boundary",
+      "is_near_true_boundary",
+      "ad_overlap",
+      "is_ad_overlap",
+      "is_ad_core",
+      "is_clean_nonad",
+      "overlapping_ad_interval_ids",
+      "per_video_ad_vs_nonad_contrast_score",
+      "audio_candidate_score_for_discussion"
+    ]
+  },
+  "created_at": "2026-05-27T23:00:49+09:00"
+}

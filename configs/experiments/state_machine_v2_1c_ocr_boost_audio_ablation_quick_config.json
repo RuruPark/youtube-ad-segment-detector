@@ -1,0 +1,105 @@
+{
+  "task": "state_machine_v2_1c_ocr_boost_audio_ablation_quick",
+  "quick_experiment_mode": true,
+  "base_candidate_id": "v2_1b_ocr_phase_transition_light",
+  "development_video_ids": [
+    1,
+    2,
+    5,
+    6,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "paths": {
+    "project_root": ".",
+    "base_experiment_root": "./data/experiments/state_machine_ocr_phase_transition_v2_1b_candidate_development",
+    "base_output_root": "./data/experiments/state_machine_ocr_phase_transition_v2_1b_candidate_development/outputs/v2_1b_ocr_phase_transition_light",
+    "base_v2_1b_config": "./configs/experiments/state_machine_ocr_phase_transition_v2_1b_candidate_config.json",
+    "base_v2_1a_configs": "./data/experiments/state_machine_rule_weight_sweep_v2_1a_development/candidate_rule_configs_v2_1a.json",
+    "phase_features": "./data/experiments/state_machine_ocr_phase_transition_v2_1b_candidate_development/candidate_ocr_phase_transition_features_v2_1b.csv",
+    "ocr_frame_results": "./workspaces/ocr_final_scene_anchor_v2_5_development/runs/final_scene_anchor_ocr_v2_5_development_20260527_050904/final_scene_anchor_ocr_frame_results_v2_5_development.csv",
+    "ocr_anchor_features": "./workspaces/ocr_final_scene_anchor_v2_5_development/runs/final_scene_anchor_ocr_v2_5_development_20260527_050904/final_scene_anchor_ocr_anchor_window_features_v2_5_development.csv",
+    "ocr_timeline_features": "./workspaces/ocr_final_scene_anchor_v2_5_development/runs/final_scene_anchor_ocr_v2_5_development_20260527_050904/final_scene_anchor_ocr_20s_timeline_features_v2_5_development.csv",
+    "plus5_reference_report": "./workspaces/ocr_quality_review_v2_5_development/runs/development_ad_context_plus5_ocr_review_v2_5_20260528_022158/development_ad_context_plus5_ocr_review_v2_5_report.json",
+    "actual_labels": "./data/segments/ad_interval_segments_v2_4.csv",
+    "split_csv": "./data/splits/video_split_v2_4.csv",
+    "metadata_csv": "./data/video_metadata/video_manifest_v2_2.csv",
+    "experiment_root": "./data/experiments/state_machine_v2_1c_ocr_boost_audio_ablation_quick",
+    "viewer_patch": "./outputs/viewer/state_machine_viewer_registry_patch_v2_1c_ocr_boost_audio_ablation_top_variants.json",
+    "short_summary": "./reports/experiments/state_machine_v2_1c_ocr_boost_audio_ablation_quick_short_summary.md",
+    "report": "./reports/experiments/state_machine_v2_1c_ocr_boost_audio_ablation_quick_report.json",
+    "run_log": "./logs/state_machine_v2_1c_ocr_boost_audio_ablation_quick_run_log.txt",
+    "latest_bundle": "./outputs/latest_for_chatgpt_state_machine_v2_1c_ocr_boost_audio_ablation_quick"
+  },
+  "ocr_boost_modes": {
+    "baseline_ocr": {
+      "disclosure_boost_weight": 0.0,
+      "intro_context_boost_weight": 0.0
+    },
+    "disclosure_boost": {
+      "disclosure_boost_weight": 0.1,
+      "intro_context_boost_weight": 0.0
+    },
+    "intro_context_boost": {
+      "disclosure_boost_weight": 0.0,
+      "intro_context_boost_weight": 0.1
+    },
+    "disclosure_intro_combo": {
+      "disclosure_boost_weight": 0.08,
+      "intro_context_boost_weight": 0.08,
+      "combo_clip_delta": 0.16
+    }
+  },
+  "audio_modes": [
+    "with_audio",
+    "no_audio",
+    "audio_end_only"
+  ],
+  "thresholds": {
+    "min_interval_ad_score": 0.4,
+    "min_interval_score_density": 0.2,
+    "min_hard_evidence_count": 1,
+    "min_hard_evidence_density_per_60s": 0.35
+  },
+  "budget_guard": {
+    "soft_overprediction_ratio": 0.18,
+    "hard_overprediction_ratio": 0.25,
+    "target_prediction_ratio_after_pruning": 0.15
+  },
+  "score_weights": {
+    "start_strength_score": 0.36,
+    "continuity_strength_score": 0.22,
+    "end_quality_score": 0.18,
+    "hard_evidence_density_score": 0.17,
+    "ocr_timeline_consistency_score": 0.1,
+    "audio_relative_support_score": 0.04
+  },
+  "ultra_high_confidence": {
+    "ultra_min_interval_ad_score": 0.85,
+    "ultra_min_interval_score_density": 0.35,
+    "ultra_min_hard_evidence_count": 3,
+    "ultra_min_hard_evidence_density_per_60s": 1.0,
+    "ultra_min_ocr_hard_count": 2,
+    "ultra_min_product_cta_timeline_types": 2
+  },
+  "fixed_safety": {
+    "formal_rule_doc_created": false,
+    "long_recommendation_note_created": false,
+    "final_performance_claim": false,
+    "actual_label_used_for_decision": false,
+    "actual_label_used_for_posthoc_scoring": true,
+    "plus5_actual_label_phase_used_for_decision": false,
+    "OCR_extraction_executed": false,
+    "audio_extraction_executed": false,
+    "scene_extraction_executed": false,
+    "Extended_Evaluation_processed": false,
+    "Diagnostic_Subset_processed": false,
+    "Pure_Test_processed": false
+  }
+}

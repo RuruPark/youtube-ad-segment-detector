@@ -1,0 +1,73 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Environment and local secrets
+.env
+.env.*
+*.local
+
+# Private datasets and generated feature stores
+/data/**
+!/data/
+!/data/sample/
+!/data/sample/**
+
+# Generated outputs. Keep only the static public demo viewer.
+/outputs/**
+!/outputs/
+!/outputs/demo/
+!/outputs/demo/final_presentation_ad_skip_viewer/
+!/outputs/demo/final_presentation_ad_skip_viewer/index.html
+!/outputs/demo/final_presentation_ad_skip_viewer/app.js
+!/outputs/demo/final_presentation_ad_skip_viewer/style.css
+!/outputs/demo/final_presentation_ad_skip_viewer/demo_viewer_manifest.json
+!/outputs/demo/final_presentation_ad_skip_viewer/demo_viewer_manifest.js
+!/outputs/demo/final_presentation_ad_skip_viewer/demo_viewer_metrics.json
+!/outputs/demo/final_presentation_ad_skip_viewer/demo_viewer_metrics.js
+
+# Runtime artifacts
+/cache/
+/logs/
+/reports/
+/backups/
+/tmp/
+/workspaces/
+/external/
+
+# Raw media, frame dumps, model weights, binary review artifacts
+*.mp4
+*.mov
+*.mkv
+*.avi
+*.webm
+*.wav
+*.mp3
+*.m4a
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.parquet
+*.pkl
+*.pickle
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.pdf
+*.xlsx
+*.xls
+
+# Keep documentation image folder even when empty.
+!/assets/
+!/assets/demo_screenshots/
+!/assets/demo_screenshots/.gitkeep

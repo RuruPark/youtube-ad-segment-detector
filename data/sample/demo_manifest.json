@@ -1,0 +1,64 @@
+{
+  "project": "youtube-ad-segment-detector-public-demo",
+  "is_public_sample": true,
+  "default_video_id": 101,
+  "test_video_ids": [
+    101,
+    102
+  ],
+  "notes": "Synthetic manifest for GitHub demo. No raw videos are included.",
+  "videos": [
+    {
+      "video_id": 101,
+      "split": "sample",
+      "video_name": "public sample timeline A",
+      "video_path": "",
+      "video_url": "",
+      "playable": false,
+      "playback_warning": "Public sample only; raw video is not included.",
+      "video_duration_sec": 180.0,
+      "actual_intervals": [
+        {
+          "start_sec": 32.0,
+          "end_sec": 61.5
+        },
+        {
+          "start_sec": 116.0,
+          "end_sec": 147.0
+        }
+      ],
+      "predicted_intervals": [
+        {
+          "start_sec": 31.5,
+          "end_sec": 59.0
+        },
+        {
+          "start_sec": 116.5,
+          "end_sec": 146.0
+        }
+      ]
+    },
+    {
+      "video_id": 102,
+      "split": "sample",
+      "video_name": "public sample timeline B",
+      "video_path": "",
+      "video_url": "",
+      "playable": false,
+      "playback_warning": "Public sample only; raw video is not included.",
+      "video_duration_sec": 150.0,
+      "actual_intervals": [
+        {
+          "start_sec": 44.0,
+          "end_sec": 88.0
+        }
+      ],
+      "predicted_intervals": [
+        {
+          "start_sec": 45.0,
+          "end_sec": 90.5
+        }
+      ]
+    }
+  ]
+}

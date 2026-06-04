@@ -1,0 +1,61 @@
+{
+  "version": "v2_4",
+  "score_formula": {
+    "ocr_ad_text_score": "0.35 * keyword_score + 0.20 * text_density_score + 0.15 * discount_promotion_score + 0.15 * purchase_cta_score + 0.10 * brand_product_score + 0.05 * link_pattern_score",
+    "notice": "Exploratory component score only; finite 0-1 robust saturation, not trained calibration."
+  },
+  "keyword_categories": [
+    "ad_disclosure",
+    "brand",
+    "cta",
+    "discount",
+    "link_or_more_info",
+    "product",
+    "promotion",
+    "purchase",
+    "sponsor",
+    "observed_candidate"
+  ],
+  "feature_weights": {
+    "keyword_score": 0.35,
+    "text_density_score": 0.2,
+    "discount_promotion_score": 0.15,
+    "purchase_cta_score": 0.15,
+    "brand_product_score": 0.1,
+    "link_pattern_score": 0.05
+  },
+  "normalization_method": "Saturating min-max style caps using frame_count denominators; all score outputs clipped to finite [0, 1].",
+  "candidate_thresholds": {
+    "post_10s_ocr_ad_like_frame_ratio_min": 0.55,
+    "post_10s_ocr_ad_text_score_median_min": 0.178027,
+    "post_10s_keyword_nonzero_frame_ratio_min": 0.2,
+    "pre_post_score_delta_min": 0.05
+  },
+  "start_boundary_rule": {
+    "requires_scene_boundary_anchor": true,
+    "conditions": [
+      "post_10s_ocr_ad_like_frame_ratio >= candidate_threshold",
+      "post_10s_ocr_ad_text_score_median >= candidate_threshold",
+      "post_10s_keyword_nonzero_frame_ratio >= candidate_threshold",
+      "post_10s_score_median - pre_10s_score_median >= 0.05"
+    ]
+  },
+  "end_boundary_rule": {
+    "requires_scene_boundary_anchor": true,
+    "conditions": [
+      "pre_10s_ocr_ad_like_frame_ratio >= candidate_threshold",
+      "pre_10s_ocr_ad_text_score_median >= candidate_threshold",
+      "pre_10s_keyword_nonzero_frame_ratio >= candidate_threshold",
+      "pre_10s_score_median - post_10s_score_median >= 0.05"
+    ]
+  },
+  "threshold_source": "label-aligned v2_4 OCR cue analysis; exploratory quantiles only.",
+  "caveats": [
+    "현재 OCR feature는 label-aligned analysis용이다.",
+    "inference에서는 정답 ad_start/ad_end를 사용할 수 없다.",
+    "실제 detector에서는 visual_scene_boundary_anchors_v2_4.csv candidate_time_sec 기준 pre_10s/post_10s OCR context feature를 다시 계산해야 한다.",
+    "OCR 단독 광고 탐지기나 final 성능 산출물이 아니다."
+  ],
+  "intended_fusion_target": "scene-change anchor + audio persistence + OCR persistence rule-based interval detector",
+  "not_final_detector_notice": "These thresholds are exploratory candidate rules, not train/test-selected final thresholds."
+}

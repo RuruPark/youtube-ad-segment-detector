@@ -1,0 +1,4 @@
+prediction_id,video_id,ad_start_sec,ad_end_sec,start_confidence_level,end_confidence_level,start_reason,end_reason
+PRED_SAMPLE_A_001,101,31.5,59.0,high,medium,ocr_disclosure_with_scene_anchor,guarded_end_extension
+PRED_SAMPLE_A_002,101,116.5,146.0,high,high,product_cta_cluster,black_end_support
+PRED_SAMPLE_B_001,102,45.0,90.5,medium,medium,sponsor_product_support,ocr_drop_with_audio_quiet

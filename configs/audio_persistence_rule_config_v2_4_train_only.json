@@ -1,0 +1,375 @@
+{
+  "version": "v2_4",
+  "split_basis": "train_only",
+  "split_seed": 20240524,
+  "split_file": "./data/splits/video_split_v2_4.csv",
+  "train_video_ids": [
+    1,
+    2,
+    5,
+    6,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "validation_video_ids": [
+    3,
+    7,
+    18
+  ],
+  "test_video_ids": [
+    4,
+    16,
+    17
+  ],
+  "input_feature_files": {
+    "labeled": "./data/audio/audio_labeled_segment_features_v2_4.csv",
+    "edge": "./data/audio/audio_ad_edge_5s_10s_features_v2_4.csv",
+    "subwindow": "./data/audio/audio_ad_edge_persistence_subwindow_features_v2_4.csv",
+    "context_scores": "./data/audio/audio_ad_edge_persistence_context_scores_v2_4.csv",
+    "boundary_scores": "./data/audio/audio_ad_edge_boundary_persistence_scores_v2_4.csv"
+  },
+  "exploratory_reference_files": {
+    "feature_recommendations": "./data/audio/audio_rule_feature_recommendations_v2_4.csv",
+    "candidate_thresholds": "./data/audio/audio_rule_candidate_thresholds_v2_4.csv",
+    "persistence_rule_config": "./configs/audio_persistence_rule_config_v2_4.json",
+    "rule_design_md": "./reports/audio_persistence_rule_design_v2_4.md",
+    "edge_persistence_summary": "./reports/extract_audio_ad_edge_persistence_v2_4_summary.md"
+  },
+  "selected_features": [
+    "onset_count",
+    "spectral_flux_mean",
+    "onset_strength_mean",
+    "mfcc_7_std",
+    "mfcc_13_std",
+    "mfcc_6_std",
+    "mfcc_5_std",
+    "mfcc_12_std",
+    "mfcc_11_std",
+    "spectral_flux_max",
+    "onset_strength_max",
+    "mfcc_10_std",
+    "spectral_flux_std",
+    "onset_strength_std",
+    "mfcc_3_std",
+    "onset_density",
+    "onset_count_per_sec",
+    "mfcc_9_std",
+    "audio_log_energy_mean",
+    "mfcc_8_std"
+  ],
+  "feature_directions": {
+    "onset_density": "higher_indicates_ad",
+    "onset_count_per_sec": "higher_indicates_ad",
+    "spectral_flux_mean": "higher_indicates_ad",
+    "onset_strength_mean": "higher_indicates_ad",
+    "spectral_flux_max": "higher_indicates_ad",
+    "onset_strength_max": "higher_indicates_ad",
+    "audio_log_energy_mean": "higher_indicates_ad",
+    "audio_rms_mean": "higher_indicates_ad",
+    "audio_mean_abs_amplitude": "higher_indicates_ad",
+    "silence_ratio": "lower_indicates_ad",
+    "low_energy_ratio": "lower_indicates_ad",
+    "spectral_flatness_std": "lower_indicates_ad",
+    "spectral_bandwidth_mean": "lower_indicates_ad",
+    "spectral_centroid_std": "lower_indicates_ad",
+    "zero_crossing_rate_std": "lower_indicates_ad"
+  },
+  "feature_weights": {
+    "onset_density_score": 0.3,
+    "flux_onset_score": 0.25,
+    "energy_score": 0.2,
+    "inverse_silence_score": 0.15,
+    "spectral_texture_score": 0.1
+  },
+  "train_only_thresholds": {
+    "audio_rms_mean": {
+      "direction": "higher_indicates_ad",
+      "threshold": 0.03382961731404059,
+      "threshold_rule": "audio_rms_mean >= 0.0338296"
+    },
+    "audio_rms_std": {
+      "direction": "higher_indicates_ad",
+      "threshold": 0.01779566695913666,
+      "threshold_rule": "audio_rms_std >= 0.0177957"
+    },
+    "audio_rms_max": {
+      "direction": "higher_indicates_ad",
+      "threshold": 0.11567454636096951,
+      "threshold_rule": "audio_rms_max >= 0.115675"
+    },
+    "audio_log_energy_mean": {
+      "direction": "higher_indicates_ad",
+      "threshold": -3.0591902256011965,
+      "threshold_rule": "audio_log_energy_mean >= -3.05919"
+    },
+    "audio_peak_amplitude": {
+      "direction": "higher_indicates_ad",
+      "threshold": 0.8625488281249998,
+      "threshold_rule": "audio_peak_amplitude >= 0.862549"
+    },
+    "audio_mean_abs_amplitude": {
+      "direction": "higher_indicates_ad",
+      "threshold": 0.02589614223688834,
+      "threshold_rule": "audio_mean_abs_amplitude >= 0.0258961"
+    },
+    "silence_ratio": {
+      "direction": "lower_indicates_ad",
+      "threshold": 0.3350158819508664,
+      "threshold_rule": "silence_ratio <= 0.335016"
+    },
+    "low_energy_ratio": {
+      "direction": "lower_indicates_ad",
+      "threshold": 0.45905953237222596,
+      "threshold_rule": "low_energy_ratio <= 0.45906"
+    },
+    "zero_crossing_rate_mean": {
+      "direction": "lower_indicates_ad",
+      "threshold": 0.09518858018132148,
+      "threshold_rule": "zero_crossing_rate_mean <= 0.0951886"
+    },
+    "zero_crossing_rate_std": {
+      "direction": "lower_indicates_ad",
+      "threshold": 0.06268812948554571,
+      "threshold_rule": "zero_crossing_rate_std <= 0.0626881"
+    },
+    "spectral_centroid_mean": {
+      "direction": "lower_indicates_ad",
+      "threshold": 1601.8796875,
+      "threshold_rule": "spectral_centroid_mean <= 1601.88"
+    },
+    "spectral_centroid_std": {
+      "direction": "lower_indicates_ad",
+      "threshold": 612.1886352539062,
+      "threshold_rule": "spectral_centroid_std <= 612.189"
+    },
+    "spectral_bandwidth_mean": {
+      "direction": "lower_indicates_ad",
+      "threshold": 1743.6446655273437,
+      "threshold_rule": "spectral_bandwidth_mean <= 1743.64"
+    },
+    "spectral_rolloff_mean": {
+      "direction": "lower_indicates_ad",
+      "threshold": 3177.859240722656,
+      "threshold_rule": "spectral_rolloff_mean <= 3177.86"
+    },
+    "spectral_rolloff_std": {
+      "direction": "lower_indicates_ad",
+      "threshold": 1363.1012634277342,
+      "threshold_rule": "spectral_rolloff_std <= 1363.1"
+    },
+    "spectral_flatness_mean": {
+      "direction": "lower_indicates_ad",
+      "threshold": 0.02740763239562503,
+      "threshold_rule": "spectral_flatness_mean <= 0.0274076"
+    },
+    "spectral_flatness_std": {
+      "direction": "lower_indicates_ad",
+      "threshold": 0.028548797126859343,
+      "threshold_rule": "spectral_flatness_std <= 0.0285488"
+    },
+    "spectral_flux_mean": {
+      "direction": "higher_indicates_ad",
+      "threshold": 0.053260664641857094,
+      "threshold_rule": "spectral_flux_mean >= 0.0532607"
+    },
+    "spectral_flux_std": {
+      "direction": "higher_indicates_ad",
+      "threshold": 0.021259146649390423,
+      "threshold_rule": "spectral_flux_std >= 0.0212591"
+    },
+    "spectral_flux_max": {
+      "direction": "higher_indicates_ad",
+      "threshold": 0.16962571442127225,
+      "threshold_rule": "spectral_flux_max >= 0.169626"
+    },
+    "mfcc_1_mean": {
+      "direction": "higher_indicates_ad",
+      "threshold": -4.20068702697754,
+      "threshold_rule": "mfcc_1_mean >= -4.20069"
+    },
+    "mfcc_2_mean": {
+      "direction": "higher_indicates_ad",
+      "threshold": 9.751065492630003,
+      "threshold_rule": "mfcc_2_mean >= 9.75107"
+    },
+    "mfcc_3_mean": {
+      "direction": "lower_indicates_ad",
+      "threshold": 0.9407065510749812,
+      "threshold_rule": "mfcc_3_mean <= 0.940707"
+    },
+    "mfcc_4_mean": {
+      "direction": "lower_indicates_ad",
+      "threshold": 1.2432491779327393,
+      "threshold_rule": "mfcc_4_mean <= 1.24325"
+    },
+    "mfcc_5_mean": {
+      "direction": "lower_indicates_ad",
+      "threshold": -0.5058056533336643,
+      "threshold_rule": "mfcc_5_mean <= -0.505806"
+    },
+    "mfcc_6_mean": {
+      "direction": "lower_indicates_ad",
+      "threshold": -0.6168576270341873,
+      "threshold_rule": "mfcc_6_mean <= -0.616858"
+    },
+    "mfcc_7_mean": {
+      "direction": "lower_indicates_ad",
+      "threshold": -1.0556267261505128,
+      "threshold_rule": "mfcc_7_mean <= -1.05563"
+    },
+    "mfcc_8_mean": {
+      "direction": "lower_indicates_ad",
+      "threshold": 0.057410270720720157,
+      "threshold_rule": "mfcc_8_mean <= 0.0574103"
+    },
+    "mfcc_9_mean": {
+      "direction": "lower_indicates_ad",
+      "threshold": -0.5135030150413513,
+      "threshold_rule": "mfcc_9_mean <= -0.513503"
+    },
+    "mfcc_10_mean": {
+      "direction": "lower_indicates_ad",
+      "threshold": 0.0174563230015337,
+      "threshold_rule": "mfcc_10_mean <= 0.0174563"
+    },
+    "mfcc_11_mean": {
+      "direction": "lower_indicates_ad",
+      "threshold": -0.8632701575756074,
+      "threshold_rule": "mfcc_11_mean <= -0.86327"
+    },
+    "mfcc_13_mean": {
+      "direction": "lower_indicates_ad",
+      "threshold": -0.4692270517349244,
+      "threshold_rule": "mfcc_13_mean <= -0.469227"
+    },
+    "mfcc_1_std": {
+      "direction": "lower_indicates_ad",
+      "threshold": 13.790606498718262,
+      "threshold_rule": "mfcc_1_std <= 13.7906"
+    },
+    "mfcc_2_std": {
+      "direction": "lower_indicates_ad",
+      "threshold": 5.241736841201782,
+      "threshold_rule": "mfcc_2_std <= 5.24174"
+    },
+    "mfcc_3_std": {
+      "direction": "higher_indicates_ad",
+      "threshold": 3.3454471111297606,
+      "threshold_rule": "mfcc_3_std >= 3.34545"
+    },
+    "mfcc_4_std": {
+      "direction": "higher_indicates_ad",
+      "threshold": 2.5683684825897215,
+      "threshold_rule": "mfcc_4_std >= 2.56837"
+    },
+    "mfcc_5_std": {
+      "direction": "higher_indicates_ad",
+      "threshold": 2.5090922117233276,
+      "threshold_rule": "mfcc_5_std >= 2.50909"
+    },
+    "mfcc_6_std": {
+      "direction": "higher_indicates_ad",
+      "threshold": 1.878245085477829,
+      "threshold_rule": "mfcc_6_std >= 1.87825"
+    },
+    "mfcc_7_std": {
+      "direction": "higher_indicates_ad",
+      "threshold": 1.9117727756500242,
+      "threshold_rule": "mfcc_7_std >= 1.91177"
+    },
+    "mfcc_8_std": {
+      "direction": "higher_indicates_ad",
+      "threshold": 1.2891100287437438,
+      "threshold_rule": "mfcc_8_std >= 1.28911"
+    },
+    "mfcc_9_std": {
+      "direction": "higher_indicates_ad",
+      "threshold": 1.3890342712402344,
+      "threshold_rule": "mfcc_9_std >= 1.38903"
+    },
+    "mfcc_10_std": {
+      "direction": "higher_indicates_ad",
+      "threshold": 1.2018993616104126,
+      "threshold_rule": "mfcc_10_std >= 1.2019"
+    },
+    "mfcc_11_std": {
+      "direction": "higher_indicates_ad",
+      "threshold": 1.1702305793762207,
+      "threshold_rule": "mfcc_11_std >= 1.17023"
+    },
+    "mfcc_12_std": {
+      "direction": "higher_indicates_ad",
+      "threshold": 1.2001996517181395,
+      "threshold_rule": "mfcc_12_std >= 1.2002"
+    },
+    "mfcc_13_std": {
+      "direction": "higher_indicates_ad",
+      "threshold": 1.2895449876785277,
+      "threshold_rule": "mfcc_13_std >= 1.28954"
+    },
+    "onset_count": {
+      "direction": "higher_indicates_ad",
+      "threshold": 140.0,
+      "threshold_rule": "onset_count >= 140"
+    },
+    "onset_strength_mean": {
+      "direction": "higher_indicates_ad",
+      "threshold": 0.053260664641857094,
+      "threshold_rule": "onset_strength_mean >= 0.0532607"
+    },
+    "onset_strength_std": {
+      "direction": "higher_indicates_ad",
+      "threshold": 0.021259146649390423,
+      "threshold_rule": "onset_strength_std >= 0.0212591"
+    },
+    "onset_strength_max": {
+      "direction": "higher_indicates_ad",
+      "threshold": 0.16962571442127225,
+      "threshold_rule": "onset_strength_max >= 0.169626"
+    },
+    "onset_density": {
+      "direction": "higher_indicates_ad",
+      "threshold": 3.6589423076923078,
+      "threshold_rule": "onset_density >= 3.65894"
+    },
+    "onset_count_per_sec": {
+      "direction": "higher_indicates_ad",
+      "threshold": 3.6589423076923078,
+      "threshold_rule": "onset_count_per_sec >= 3.65894"
+    }
+  },
+  "audio_ad_like_score_formula": "0.30*onset_density_score + 0.25*flux_onset_score + 0.20*energy_score + 0.15*inverse_silence_score + 0.10*spectral_texture_score",
+  "persistence_window_sec": 10,
+  "subwindow_size_sec": 2,
+  "subwindow_stride_sec": 2,
+  "start_boundary_rule": {
+    "post_10s_audio_ad_like_ratio_min": 0.6,
+    "post_10s_max_consecutive_ad_like_sec_min": 6.0,
+    "post_10s_median_score_min": 0.513316808034915,
+    "post_10s_median_score_minus_pre_10s_median_score_min": 0.05
+  },
+  "end_boundary_rule": {
+    "pre_10s_audio_ad_like_ratio_min": 0.6,
+    "pre_10s_max_consecutive_ad_like_sec_min": 6.0,
+    "pre_10s_median_score_min": 0.513316808034915,
+    "pre_10s_median_score_minus_post_10s_median_score_min": 0.05
+  },
+  "validation_usage_policy": "validation_application_audit_only_no_automatic_threshold_adjustment",
+  "test_usage_policy": "test_not_used_for_rule_design_preserved_for_final_evaluation",
+  "leakage_guard_notes": [
+    "thresholds, recommendations, and config are computed from train split only",
+    "validation is used only for application audit",
+    "test rows are not used for threshold, recommendation, or config"
+  ],
+  "caveats": [
+    "train video count is small",
+    "thresholds are exploratory candidates",
+    "full-data v2_4 outputs are preserved only as exploratory_full_v2_4 references"
+  ]
+}

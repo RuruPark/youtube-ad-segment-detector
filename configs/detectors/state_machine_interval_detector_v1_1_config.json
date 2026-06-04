@@ -1,0 +1,139 @@
+{
+  "project_root": ".",
+  "version": "state_machine_interval_detector_v1_1",
+  "split_seed": 20240524,
+  "train_video_id": [
+    1,
+    2,
+    5,
+    6,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "validation_video_id": [
+    3,
+    7,
+    18
+  ],
+  "test_video_id": [
+    4,
+    16,
+    17
+  ],
+  "input_paths": {
+    "split_file": "data/splits/video_split_v2_4.csv",
+    "primary_detector_input": "data/fusion/scene_audio_ocr_visual_anchor_discussion_table_v2_4_train_val_semantic_fixed.csv",
+    "compact_discussion_input": "data/fusion/scene_audio_ocr_rule_discussion_compact_v2_4_train_val.csv",
+    "canonical_visual_anchor": "data/features/visual_scene_boundary_anchors_v2_4.csv",
+    "canonical_visual_anchor_with_split": "data/features/visual_scene_boundary_anchors_v2_4_with_split.csv",
+    "audio_context_features": "data/audio/audio_visual_anchor_persistence_features_v2_4_train_val_for_discussion.csv",
+    "ocr_context_features": "data/ocr/ocr_visual_anchor_context_features_v2_4_train_val_for_discussion.csv"
+  },
+  "output_paths": {
+    "prediction_csv": "data/predictions/state_machine_interval_predictions_v1_1_train_val.csv",
+    "trace_csv": "data/predictions/state_machine_anchor_trace_v1_1_train_val.csv",
+    "open_interval_csv": "data/predictions/state_machine_open_interval_candidates_v1_1_train_val.csv",
+    "audit_csv": "data/predictions/state_machine_detector_validation_audit_v1_1_train_val.csv",
+    "summary_md": "reports/detectors/state_machine_interval_detector_v1_1_summary.md",
+    "report_json": "reports/detectors/state_machine_interval_detector_v1_1_report.json",
+    "run_log": "logs/state_machine_interval_detector_v1_1_run_log.txt",
+    "changelog_md": "reports/rules/scene_audio_ocr_rule_v1_1_final_review_changelog.md",
+    "latest_bundle": "outputs/latest_for_chatgpt_state_machine_detector_v1_1"
+  },
+  "state_names": [
+    "non_ad",
+    "start_pending",
+    "in_ad",
+    "end_pending"
+  ],
+  "pending_rules": {
+    "start_pending_max_anchor_count": 1,
+    "start_pending_max_duration_sec": 15,
+    "start_pending_timeout_action": "cancel_to_non_ad",
+    "end_pending_max_anchor_count": 2,
+    "end_pending_max_duration_sec": 20,
+    "end_pending_timeout_action_before_120s": "return_to_in_ad_if_no_confirming_low_flow",
+    "end_pending_timeout_action_after_120s": "confirm_end_only_if_repeated_low_or_repeated_c3_else_return_to_in_ad",
+    "retroactive_start_review_anchor_count": 1
+  },
+  "minimum_duration_prior": {
+    "minimum_ad_duration_sec": 20,
+    "allow_e2_exception_within_min_duration": true
+  },
+  "long_ad_prior": {
+    "long_ad_sensitive_after_sec": 120,
+    "hard_cut_after_120s": false
+  },
+  "low_gap_bridge": {
+    "gap_le_10_sec_requirement": "audio_or_ocr_medium_or_high",
+    "gap_10_to_20_sec_requirement": "audio_and_ocr_medium_or_high",
+    "gap_gt_20_sec": "no_automatic_bridge",
+    "c3_is_strong_bridge_evidence": false
+  },
+  "interval_merge": {
+    "merge_overlapping_intervals": true,
+    "merge_gap_sec": 10
+  },
+  "conflict_definitions": {
+    "C3": {
+      "audio_context_level": "high",
+      "ocr_context_reliability_level": "high",
+      "ocr_context_level": "low"
+    },
+    "D2": {
+      "audio_context_level": "low",
+      "ocr_context_level": "high"
+    }
+  },
+  "coverage_interpretation": {
+    "reliability_column": "ocr_context_reliability_level",
+    "ocr_low_with_reliability_low": "unknown_not_non_ad",
+    "unknown_values": [
+      "unknown",
+      "unknown_or_weak",
+      "",
+      "NaN",
+      "empty",
+      "low_or_unknown"
+    ]
+  },
+  "leakage_guard_settings": {
+    "run_splits": [
+      "train",
+      "validation"
+    ],
+    "excluded_splits": [
+      "test"
+    ],
+    "threshold_level_keyword_rule_design": "train_only",
+    "validation_usage": "audit_review_only",
+    "nearest_true_boundary_usage": "audit_only_not_scoring",
+    "forbidden_decision_column_patterns": [
+      "nearest_true_boundary",
+      "distance_to_nearest_true_boundary",
+      "is_near_true_boundary",
+      "label",
+      "true",
+      "audit"
+    ],
+    "close_open_interval_at_video_end": false
+  },
+  "metadata": {
+    "estimated_duration": "35-45 minutes",
+    "task_start_time": "2026-05-25T12:39:02+09:00",
+    "backup_dir": "./backups/rule_docs_final_review_v1_1_20260525_124158",
+    "backed_up_files": [
+      "reports/rules/scene_audio_ocr_state_machine_rule_v1_1.md",
+      "reports/rules/state_machine_rule_implementation_checklist_v1_1.md",
+      "configs/rule_docs/scene_audio_ocr_state_machine_rule_v1_1_draft.json"
+    ],
+    "input_file_stats_before_path": "reports/detectors/state_machine_interval_detector_v1_1_input_file_stats_before.json",
+    "old_project_snapshot_before": "reports/rules/old_project_snapshot_before_state_machine_detector_v1_1.tsv"
+  }
+}

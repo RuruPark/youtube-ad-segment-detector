@@ -1,0 +1,130 @@
+{
+  "task_name": "split_terminology_v2_5_ruledev_extended_eval",
+  "version": "v2_5_ruledev_extended_eval",
+  "created_at": "2026-05-27T04:21:42+09:00",
+  "project_root": ".",
+  "source_split_file": "./data/splits/video_split_v2_4.csv",
+  "source_split_preserved": true,
+  "split_seed": 20240524,
+  "row_count": 18,
+  "original_split_counts": {
+    "train": 12,
+    "validation": 3,
+    "test": 3
+  },
+  "definitions": {
+    "Development Set": "original v2.4 train split, used for rule design, cue analysis, and error diagnosis.",
+    "Test Set": "original v2.4 validation + test splits, used after rule freeze for final evaluation and demo review."
+  },
+  "definitions_ko": {
+    "Development Set": "기존 v2.4 train split으로, 규칙 설계와 cue 분석, 오류 진단에 사용한다.",
+    "Test Set": "기존 v2.4 validation + test split으로, 규칙 고정 이후 최종 평가와 데모 확인에 사용한다."
+  },
+  "relationships": {
+    "public_split_policy": "Public-facing documents use Development Set and Test Set.",
+    "historical_internal_columns_preserved": true
+  },
+  "fixed_video_ids": {
+    "development_set": [
+      1,
+      2,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "diagnostic_subset": [
+      3,
+      7,
+      18
+    ],
+    "pure_test_set": [
+      4,
+      16,
+      17
+    ],
+    "extended_evaluation_set": [
+      3,
+      7,
+      18,
+      4,
+      16,
+      17
+    ]
+  },
+  "usage_policy": {
+    "development_set": "rule_development_only",
+    "test_set": "post_freeze_final_evaluation_and_demo_review",
+    "historical_internal_keys_preserved": true
+  },
+  "filename_convention_policy": {
+    "development_or_ruledev": "Development Set",
+    "test": "Test Set",
+    "historical_names_preserved": true
+  },
+  "split_check": {
+    "valid": true,
+    "row_count": 18,
+    "observed_split_video_ids": {
+      "train": [
+        1,
+        2,
+        5,
+        6,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "validation": [
+        3,
+        7,
+        18
+      ],
+      "test": [
+        4,
+        16,
+        17
+      ]
+    },
+    "expected_split_video_ids": {
+      "train": [
+        1,
+        2,
+        5,
+        6,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "validation": [
+        3,
+        7,
+        18
+      ],
+      "test": [
+        4,
+        16,
+        17
+      ]
+    },
+    "seed_values": [
+      "20240524"
+    ]
+  }
+}

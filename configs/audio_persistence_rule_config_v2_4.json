@@ -1,0 +1,115 @@
+{
+  "version": "v2_4",
+  "created_at": "2026-05-24T16:21:21+09:00",
+  "input_files": {
+    "labeled_features": "./data/audio/audio_labeled_segment_features_v2_4.csv",
+    "candidate_thresholds": "./data/audio/audio_rule_candidate_thresholds_v2_4.csv",
+    "feature_recommendations": "./data/audio/audio_rule_feature_recommendations_v2_4.csv",
+    "pairwise": "./data/audio/audio_rule_pairwise_feature_comparison_v2_4.csv",
+    "paired_delta_summary": "./data/audio/audio_rule_paired_context_delta_summary_v2_4.csv",
+    "normalized_pairwise": "./data/audio/audio_rule_video_normalized_pairwise_comparison_v2_4.csv",
+    "analysis_summary": "./reports/analyze_audio_rule_features_v2_4_summary.md",
+    "analysis_report": "./reports/analyze_audio_rule_features_v2_4_report.json",
+    "previous_sampling_plan": "./data/audio/audio_labeled_segment_sampling_plan_v2_4.csv",
+    "label_file": "./data/segments/ad_interval_segments_v2_4.csv",
+    "manifest_file": "./data/video_metadata/video_manifest_v2_2.csv"
+  },
+  "selected_features": [
+    "onset_density",
+    "onset_count_per_sec",
+    "spectral_flux_mean",
+    "onset_strength_mean",
+    "spectral_flux_max",
+    "onset_strength_max",
+    "audio_log_energy_mean",
+    "audio_rms_mean",
+    "audio_mean_abs_amplitude",
+    "silence_ratio",
+    "low_energy_ratio",
+    "spectral_flatness_std",
+    "spectral_bandwidth_mean",
+    "spectral_centroid_std",
+    "zero_crossing_rate_std"
+  ],
+  "feature_directions": {
+    "onset_density": "higher_indicates_ad",
+    "onset_count_per_sec": "higher_indicates_ad",
+    "spectral_flux_mean": "higher_indicates_ad",
+    "onset_strength_mean": "higher_indicates_ad",
+    "spectral_flux_max": "higher_indicates_ad",
+    "onset_strength_max": "higher_indicates_ad",
+    "audio_log_energy_mean": "higher_indicates_ad",
+    "audio_rms_mean": "higher_indicates_ad",
+    "audio_mean_abs_amplitude": "higher_indicates_ad",
+    "silence_ratio": "lower_indicates_ad",
+    "low_energy_ratio": "lower_indicates_ad",
+    "spectral_flatness_std": "lower_indicates_ad",
+    "spectral_bandwidth_mean": "lower_indicates_ad",
+    "spectral_centroid_std": "lower_indicates_ad",
+    "zero_crossing_rate_std": "lower_indicates_ad"
+  },
+  "feature_weights": {
+    "onset_density_score": 0.3,
+    "flux_onset_score": 0.25,
+    "energy_score": 0.2,
+    "inverse_silence_score": 0.15,
+    "spectral_texture_score": 0.1
+  },
+  "score_components": {
+    "onset_density_score": [
+      "onset_density",
+      "onset_count_per_sec"
+    ],
+    "flux_onset_score": [
+      "spectral_flux_mean",
+      "onset_strength_mean",
+      "spectral_flux_max",
+      "onset_strength_max"
+    ],
+    "energy_score": [
+      "audio_log_energy_mean",
+      "audio_rms_mean",
+      "audio_mean_abs_amplitude"
+    ],
+    "inverse_silence_score": [
+      "silence_ratio",
+      "low_energy_ratio"
+    ],
+    "spectral_texture_score": [
+      "spectral_flatness_std",
+      "spectral_bandwidth_mean",
+      "spectral_centroid_std"
+    ]
+  },
+  "ad_like_score_formula": "0.30*onset_density_score + 0.25*flux_onset_score + 0.20*energy_score + 0.15*inverse_silence_score + 0.10*spectral_texture_score",
+  "persistence_window_sec": 10,
+  "subwindow_size_sec": 2.0,
+  "subwindow_stride_sec": 2.0,
+  "start_boundary_rule": {
+    "post_10s_audio_ad_like_ratio_min": 0.6,
+    "post_10s_max_consecutive_ad_like_sec_min": 6,
+    "post_10s_median_score_min": 0.5081893140338933,
+    "post_minus_pre_median_delta_min": 0.05
+  },
+  "end_boundary_rule": {
+    "pre_10s_audio_ad_like_ratio_min": 0.6,
+    "pre_10s_max_consecutive_ad_like_sec_min": 6,
+    "pre_10s_median_score_min": 0.5081893140338933,
+    "pre_minus_post_median_delta_min": 0.05
+  },
+  "default_thresholds": {
+    "onset_density_threshold": 3.77782874617737,
+    "onset_density_threshold_source": "ad_full_vs_random_non_ad_30s onset_count / segment_duration_sec",
+    "audio_ad_like_score_threshold": 0.5081893140338933,
+    "audio_ad_like_score_threshold_source": "mean(random_non_ad_subwindow_p75, ad_edge_subwindow_p25)",
+    "score_delta_threshold": 0.05
+  },
+  "threshold_source": "v2_4 labeled ad interval edge/subwindow exploratory analysis",
+  "caveats": [
+    "Exploratory rule candidate, not final detector performance.",
+    "Audio cue must be combined with visual/OCR/scene-change evidence.",
+    "Scene candidate false-positive reduction needs separate validation.",
+    "2s subwindows can be noisy."
+  ],
+  "recommended_next_integration": "Compute the same pre/post 10s persistence score around scene candidates and fuse with scene/OCR/visual cue scores."
+}
