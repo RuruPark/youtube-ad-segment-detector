@@ -834,7 +834,7 @@ Final anchor는 같은 `video_id` 안에서 2초 이내 후보를 cluster로 묶
 
 {REQUIRED_SPLIT_PHRASE_KO}
 
-즉, 기존 `train`은 모델 weight 학습용이라기보다 rule 설계와 cue 분석을 위한 개발 영역이다. 그래서 새 산출물에서는 `original_split_v2_4=train`, `split_role_v2_5=development`, `evaluation_subset_v2_5=none`을 함께 기록했다.
+기존 `train`은 모델 weight 학습용이라기보다 rule 설계와 cue 분석을 위한 개발 영역이다. 그래서 새 산출물에서는 `original_split_v2_4=train`, `split_role_v2_5=development`, `evaluation_subset_v2_5=none`을 함께 기록했다.
 
 ## 왜 Test Set은 아직 처리하지 않았는가
 
