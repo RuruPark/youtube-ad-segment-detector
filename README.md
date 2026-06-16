@@ -2,11 +2,12 @@
 
 ![Method](https://img.shields.io/badge/Method-Rule--Based-blue)
 
-유튜브 영상 내 삽입된 스폰서 광고 구간의 시작과 종료 시점(start_sec, end_sec)을 멀티모달 단서(비전, OCR, 오디오) 융합을 통해 추정하는 파이프라인입니다.
-유튜브 영상 안에 삽입된 광고 구간의 시작과 종료 시점을 추정하는 컴퓨터비전 프로젝트입니다. 장면 전환 기준점(scene anchor)을 먼저 찾고, 그 주변의 OCR 단서와 오디오 단서, 블랙 화면 단서를 함께 해석해 광고 구간 타임스탬프를 만듭니다. 무거운 모델을 사용해 광고인지 아닌지 판단하는 방식이 아닌, 규칙 기반으로 광고 시작과 종료 경계를 찾는 데 초점을 두었습니다.
+해당 프로젝트는 유튜브 영상 안에 삽입된 광고 구간의 시작과 종료 시점을 추정하는 컴퓨터비전 프로젝트입니다. 
+유튜브 영상 내 삽입된 스폰서 광고 구간의 시작과 종료 시점을 멀티모달 단서(비전, OCR, 오디오) 결합을 통해 탐지하는 것을 목표로 합니다.
+해당 프로젝트는 단독 프로젝트로 저는 데이터셋 수집과 피쳐 추출, 파이프라인 설계 및 상태 전이 성격의 규칙 기반 서비스를 구현을 수행했습니다.
+장면 전환 기준점(scene anchor)을 먼저 찾고, 그 주변의 OCR 단서와 오디오 단서, 블랙 화면 단서를 함께 해석해 광고 구간 타임스탬프를 만듭니다. 비용 절감과 모델 학습 시간을 절감하기 위해, LLM과 같이 무거운 모델로 판단하는 방식이 아닌, 규칙 기반으로 광고 시작과 종료 경계를 찾는 데 초점을 두었습니다.
 
-**역할**: 데이터 파이프라인 설계 및 멀티모달 상태 전이(State Machine) 탐지 규칙 구현
-**핵심 기술**: OpenCV, FFmpeg, TransNetV2, OCR, Rule-based State Machine
+**사용 기술**: OpenCV, FFmpeg, TransNetV2, OCR, Rule-based State Machine
 
 ---
 
@@ -68,11 +69,13 @@ flowchart LR
 Data Pipeline & Multi-modal Extraction (데이터 추출)
 
 1. 멀티모달 데이터 파이프라인 설계
+
 단일 데이터에 의존하지 않고, 원본 영상에서 세 가지 독립적인 피처(Feature)를 추출하여 분석 기반을 마련했습니다.
 장면 전환 후보 추출: 단순 이미지 분류를 넘어 프레임 간의 맥락 변화를 포착하기 위해, PyTorch 기반의 TransNetV2와 ResNet Embedding을 적용하여 의미 있는 장면 전환 시점을 비전 피처로 추출했습니다.
 영상 자막 추출: 주요 프레임에 EasyOCR을 적용해 유튜브 영상의 화면 자막을 광고 구간 주요 단서로 활용하기 위해 텍스트 피처로 변환했습니다.
 
-2. 상태 전이 기반 알고리즘 구현 (Rule-based State Machine)
+2. 상태 전이 기반 알고리즘 구현
+
 복잡한 모델 사용 없이, 규칙 기반을 이용한 광고 탐지 파이프라인을 구축했습니다.
 단일 타임라인 융합: 앞서 추출한 장면 전환 후보, OCR, 오디오 피처를 동일한 시간축 위에 하나의 통합 데이터로 병합했습니다.
 설명 가능한 경계 추정 (State Machine): non_ad, start_pending, in_ad, end_pending 상태를 순차적으로 이동하는 규칙 기반 알고리즘을 설계했습니다. 이를 통해 특정 구간이 왜 광고로 판별되었는지 추적하고, 최종 스킵 경계를 초 단위로 정밀하게 보정했습니다.
@@ -102,14 +105,27 @@ Data Pipeline & Multi-modal Extraction (데이터 추출)
 - 본 프로젝트에서 사용한 원본 영상 데이터, 광고 라벨(Annotation), 중간 산출물 및 실험 결과 파일은 공개되어 있지 않습니다.
 - 저작권 및 프로젝트 운영 정책에 따라 관련 데이터는 GitHub 저장소에 포함되어 있지 않으며, 본 저장소만으로 전체 실험을 동일하게 재현하는 것은 불가능합니다.
 - 현재 저장소는 프로젝트 구현 코드와 실행 환경 정보를 제공하는 것을 목적으로 합니다.
+
+저작권과 개인정보 보호 등으로 다음 항목은 포함하지 않았습니다.
+- 원본 YouTube 영상, 프레임 덤프, 오디오 덤프, proxy media
+- private label CSV, OCR 원문 결과, 사람이 검토한 review output
+- EasyOCR, PyTorch, TransNetV2 model cache 또는 weight
+- 실행 로그, backup, generated report, notebook output
+- 외부 논문 PDF, 외부 repository 복사본
+- 샘플 CSV, demo manifest, demo metrics는 스키마와 UI 구조 설명용 예시입니다. 전체 재현에는 사용자가 직접 준비한 private/local video data와 feature table이 필요합니다.
 - 저장소에서 확인 가능한 사항들은 [docs/reproducibility.md](docs/reproducibility.md)에서 확인 가능합니다.
+
 ## 7. Troubleshooting (STAR)
 
 예측 광고 구간 끊김 문제 해결
-Situation (상황): 예측 광고 구간이 짧게 끊어지는 현상이 발생해 실제 광고 구간을 덮지 않음.
-Task (과제): [그래서 무엇을 해결하거나 검증해야 했는지 작성]
-Action (행동): [어떤 분석 과정, 가설, 도구를 사용해 조치했는지 작성]
-Result (결과): [Development Set 포착률 상승 수치, 양호 판정 구간 개수 등 구체적인 결과와 배운 점 작성]
+
+Situation (상황): Development Set 영상에 대한 광고 탐지 실험 결과, 예측 광고 구간이 실제 광고 시작 구간과 종료 구간 위주로 짧게 끊어지는 현상이 발생했다. 따라서 탐지한 광고 구간이 실제 광고 구간을 덮지 않는 문제가 있다.
+
+Task (과제): 광고 중간 구간의 광고 단서를 포착하는 rule을 추가하거나 광고 시작 및 종료 구간에 인접한 구간에 대해 상태 전이 프로세스를 적용해 전후 맥락을 반영하도록 개선이 필요하다.
+
+Action (행동): rule 수정을 통해 광고 단서를 기반으로 광고라고 판단하는 임계값을 수정, 상태 전이 프로세스를 통해 같은 단서라도 해당 구간 전후에 광고 시작 구간과 종료 구간이 있을 경우 광고 판단 기준을 다르게 하여 실제 광고 구간을 덮을 수 있도록 조치 진행하였다.
+
+Result (결과): Development Set 영상에 대한 광고 탐지 구간이 실제 광고 구간 전체를 덮을 수 있을 때까지 실험을 진행하였다. rule 수정 과정에서 광고 오탐이 크게 발생하지 않도록 보수적으로 임계값을 변경하였다.
 
 ## 데모 확인
 
@@ -153,18 +169,6 @@ CSV 형식의 공개용 성능 요약은 [results/final_metrics_summary.csv](res
 | viewer 검토 대상 | 7 | 사람이 경계를 확인해야 하는 잔여 케이스 |
 
 장면 전환 기준점 조합은 Development Set 광고 경계 기준으로 포착률@5초 0.875, 포착률@10초 0.969로 기록되었습니다.
-
-## 데이터 공개 범위
-
-저작권과 개인정보, 재현 가능한 실험 분리를 위해 다음 항목은 포함하지 않았습니다.
-
-- 원본 YouTube 영상, 프레임 덤프, 오디오 덤프, proxy media
-- private label CSV, OCR 원문 결과, 사람이 검토한 review output
-- EasyOCR, PyTorch, TransNetV2 model cache 또는 weight
-- 실행 로그, backup, generated report, notebook output
-- 외부 논문 PDF, 외부 repository 복사본
-
-샘플 CSV, demo manifest, demo metrics는 스키마와 UI 구조 설명용 예시입니다. 전체 재현에는 사용자가 직접 준비한 private/local video data와 feature table이 필요합니다.
 
 ## 한계
 
