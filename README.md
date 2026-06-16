@@ -1,6 +1,6 @@
 # YouTube Ad Segment Detector
 
-![Deployment](https://img.shields.io/badge/Deployment-Local_Environment-FFA500?style=for-the-badge)
+![Method](https://img.shields.io/badge/Method-Rule--Based-blue)
 
 유튜브 영상 내 삽입된 스폰서 광고 구간의 시작과 종료 시점(start_sec, end_sec)을 멀티모달 단서(비전, OCR, 오디오) 융합을 통해 추정하는 파이프라인입니다.
 유튜브 영상 안에 삽입된 광고 구간의 시작과 종료 시점을 추정하는 컴퓨터비전 프로젝트입니다. 장면 전환 기준점(scene anchor)을 먼저 찾고, 그 주변의 OCR 단서와 오디오 단서, 블랙 화면 단서를 함께 해석해 광고 구간 타임스탬프를 만듭니다. 무거운 모델을 사용해 광고인지 아닌지 판단하는 방식이 아닌, 규칙 기반으로 광고 시작과 종료 경계를 찾는 데 초점을 두었습니다.
