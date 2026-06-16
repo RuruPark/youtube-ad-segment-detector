@@ -87,7 +87,25 @@ Data Pipeline & Multi-modal Extraction (데이터 추출)
 |  |  |  |  |  |
 |  |  |  |  |  |
 
-## 6. Troubleshooting (STAR)
+## 6. Execution Guide
+
+### 최소 권장 사양
+- 운영체제: Ubuntu 22.04 LTS (권장)
+- Python: 3.10 이상
+- CPU: 4코어 이상
+- 메모리(RAM): 16GB 이상
+- GPU: CUDA를 지원하는 NVIDIA GPU (ocr 추출 시, 추천 사양)
+- 저장 공간: 20GB 이상의 여유 공간
+
+### 필수 라이브러리
+- [requirements.txt](requirements.txt) 참고
+
+### 데이터셋 안내
+- 본 프로젝트에서 사용한 원본 영상 데이터, 광고 라벨(Annotation), 중간 산출물 및 실험 결과 파일은 공개되어 있지 않습니다.
+- 저작권 및 프로젝트 운영 정책에 따라 관련 데이터는 GitHub 저장소에 포함되어 있지 않으며, 본 저장소만으로 전체 실험 환경을 동일하게 재현하는 것은 불가능합니다.
+- 현재 저장소는 프로젝트 구현 코드와 실행 환경 정보를 제공하는 것을 목적으로 합니다.
+
+## 7. Troubleshooting (STAR)
 
 예측 광고 구간 끊김 문제 해결
 Situation (상황): 예측 광고 구간이 짧게 끊어지는 현상이 발생해 실제 광고 구간을 덮지 않음.
