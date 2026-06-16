@@ -102,7 +102,16 @@ Data Pipeline & Multi-modal Extraction (데이터 추출)
 - 본 프로젝트에서 사용한 원본 영상 데이터, 광고 라벨(Annotation), 중간 산출물 및 실험 결과 파일은 공개되어 있지 않습니다.
 - 저작권 및 프로젝트 운영 정책에 따라 관련 데이터는 GitHub 저장소에 포함되어 있지 않으며, 본 저장소만으로 전체 실험을 동일하게 재현하는 것은 불가능합니다.
 - 현재 저장소는 프로젝트 구현 코드와 실행 환경 정보를 제공하는 것을 목적으로 합니다.
+
+저작권과 개인정보 보호 등으로 다음 항목은 포함하지 않았습니다.
+- 원본 YouTube 영상, 프레임 덤프, 오디오 덤프, proxy media
+- private label CSV, OCR 원문 결과, 사람이 검토한 review output
+- EasyOCR, PyTorch, TransNetV2 model cache 또는 weight
+- 실행 로그, backup, generated report, notebook output
+- 외부 논문 PDF, 외부 repository 복사본
+- 샘플 CSV, demo manifest, demo metrics는 스키마와 UI 구조 설명용 예시입니다. 전체 재현에는 사용자가 직접 준비한 private/local video data와 feature table이 필요합니다.
 - 저장소에서 확인 가능한 사항들은 [docs/reproducibility.md](docs/reproducibility.md)에서 확인 가능합니다.
+
 ## 7. Troubleshooting (STAR)
 
 예측 광고 구간 끊김 문제 해결
@@ -153,18 +162,6 @@ CSV 형식의 공개용 성능 요약은 [results/final_metrics_summary.csv](res
 | viewer 검토 대상 | 7 | 사람이 경계를 확인해야 하는 잔여 케이스 |
 
 장면 전환 기준점 조합은 Development Set 광고 경계 기준으로 포착률@5초 0.875, 포착률@10초 0.969로 기록되었습니다.
-
-## 데이터 공개 범위
-
-저작권과 개인정보, 재현 가능한 실험 분리를 위해 다음 항목은 포함하지 않았습니다.
-
-- 원본 YouTube 영상, 프레임 덤프, 오디오 덤프, proxy media
-- private label CSV, OCR 원문 결과, 사람이 검토한 review output
-- EasyOCR, PyTorch, TransNetV2 model cache 또는 weight
-- 실행 로그, backup, generated report, notebook output
-- 외부 논문 PDF, 외부 repository 복사본
-
-샘플 CSV, demo manifest, demo metrics는 스키마와 UI 구조 설명용 예시입니다. 전체 재현에는 사용자가 직접 준비한 private/local video data와 feature table이 필요합니다.
 
 ## 한계
 
